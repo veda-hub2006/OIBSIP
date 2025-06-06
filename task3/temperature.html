@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="temp.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Temperature converter</h2>
+    <form id="tempForm" autocomplete="off">
+      <div class="input-group">
+        <label for="degrees">Degrees</label>
+        <input type="number" id="degrees" required>
+      </div>
+      <div class="input-group">
+        <label for="type">Type</label>
+        <select id="type">
+          <option value="fahrenheit">Fahrenheit</option>
+          <option value="celsius">Celsius</option>
+          <option value="kelvin">Kelvin</option>
+        </select>
+      </div>
+      <div class="result-group">
+        <label>Result</label>
+        <div id="result" class="result-value">--</div>
+      </div>
+      <button type="submit" class="convert-btn">Convert</button>
+    </form>
+  </div>
+  <script>
+    function convertTemperature(value, fromUnit) {
+      let celsius, fahrenheit, kelvin;
+      value = parseFloat(value);
+
+      if (fromUnit === "celsius") {
+        celsius = value;
+        fahrenheit = (value * 9/5) + 32;
+        kelvin = value + 273.15;
+      } else if (fromUnit === "fahrenheit") {
+        celsius = (value - 32) * 5/9;
+        fahrenheit = value;
+        kelvin = celsius + 273.15;
+      } else if (fromUnit === "kelvin") {
+        celsius = value - 273.15;
+        fahrenheit = (celsius * 9/5) + 32;
+        kelvin = value;
+      }
+      return {
+        celsius: celsius,
+        fahrenheit: fahrenheit,
+        kelvin: kelvin
+      };
+    }
+
+    document.getElementById('tempForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const degrees = document.getElementById('degrees').value;
+      const type = document.getElementById('type').value;
+      const resultDiv = document.getElementById('result');
+
+      if (degrees === "" || isNaN(degrees)) {
+        resultDiv.textContent = "Please enter a valid number.";
+        return;
+      }
+
+      const temps = convertTemperature(degrees, type);
+
+      let display = "";
+      if (type === "fahrenheit") {
+        display = `${temps.celsius.toFixed(4)} °C | ${temps.kelvin.toFixed(4)} K`;
+      } else if (type === "celsius") {
+        display = `${temps.fahrenheit.toFixed(4)} °F | ${temps.kelvin.toFixed(4)} K`;
+      } else if (type === "kelvin") {
+        display = `${temps.celsius.toFixed(4)} °C | ${temps.fahrenheit.toFixed(4)} °F`;
+      }
+      resultDiv.textContent = display;
+    });
+  </script>
+</body>
+</html>

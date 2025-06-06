@@ -1,0 +1,76 @@
+body {
+  background: #14cdeedc;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: #e8cbd0;
+  max-width: 350px;
+  margin: 40px auto;
+  border-radius: 28px;
+  box-shadow: 0 4px 24px rgba(8, 8, 8, 0.345);
+  padding: 32px 24px 24px 24px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.input-group, .result-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+label {
+  color: #f70505;
+  font-size: 1em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+input[type="number"], select {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1.1em;
+  border: none;
+  box-shadow: 0 4px 24px rgba(8, 8, 8, 0.345);
+  border-bottom: 1px solid #f0e7e7;
+  background: #e3e8e8;
+  border-radius: 6px 6px 0 0;
+  outline: none;
+  margin-bottom: 6px;
+}
+
+.result-group {
+  margin-top: 16px;
+}
+
+.result-value {
+  font-size: 1.3em;
+  color: #1a1a1a;
+  margin-top: 4px;
+  min-height: 1.5em;
+}
+
+.convert-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: #007aff;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.convert-btn:hover {
+  background: #005fcc;
+}
